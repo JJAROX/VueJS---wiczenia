@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>06-dyrektywy-v-model</title>
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="app">
+    <h1 v-text="title" class="vue-title"></h1>
+    <h2 v-text="message" class="vue-message"></h2>
+    <h3 class="exercise">zadanie 1</h3>
+    <input v-model="message_2" type="text" class="vue-input">
+    <p class="vue-p">Komunikat: {{message_2}}</p>
+    <h3 class="exercise">zadanie 2</h3>
+    <select class="vue-select" v-model="selected">
+      <option>Gruszka</option>
+      <option>Jabłko</option>
+      <option>Truskawka</option>
+    </select>
+    <p class="vue-p">Wybrane z selecta: {{selected}}</p>
+  </div>
+  <script>
+    const app = Vue.createApp({
+
+      data() {
+        return {
+          title: '06: Dyrektywy VueJS',
+          message: 'Dyrektywa v-model - umożliwia dwukierunkowe wiązanie: dane=>interfejs, interfejs=>dane',
+          message_2: "zawartość pola txt",
+          selected: ""
+        }
+      }
+    }).mount("#app")
+  </script>
+</body>
+
+</html>

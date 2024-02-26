@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>07-dyrektywy-obliczenia</title>
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="app">
+    <h1 v-text="title" class="vue-title"></h1>
+    <h2 v-text="message" class="vue-message"></h2>
+    <h2>Math.pow(2,5) = {{ Math.pow(2,5) }}</h2>
+    <h2>timestamp = {{ new Date().getTime() }}</h2>
+    <h2>random = {{ Math.random() }}</h2>
+    <h2>content.length = {{message.length}}</h2>
+    <h2>czy content.length > 5: <span style="color: red;">{{message.length >5?"większa":"mniejsza"}}</span></h2>
+    <h2 v-text="y.length < 5 ? 'tak' : 'nie'"></h2>
+  </div>
+  <script>
+    const app = Vue.createApp({
+
+      data() {
+        return {
+          title: '07: Dyrektywy VueJS',
+          message: 'Dyrektywy umożliwiają dowolne obliczenia, wyrażenia, skrócony if etc',
+          x: 100,
+          y: "test"
+        }
+      }
+    }).mount("#app")
+  </script>
+</body>
+
+</html>

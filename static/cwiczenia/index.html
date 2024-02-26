@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Strona Główna</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+  <h1 class="mainpage-title">lekcje VueJS</h1>
+  <h2 class="lesson-title">lekcja-1-directives</h2>
+  <div class="main" id="lession_1">
+  </div>
+  <h2 class="lesson-title">lekcja-2-arrays-methods-computed</h2>
+  <div class="main" id="lession_2">
+  </div>
+  <script>
+    const options = {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json"
+      }
+    }
+    fetch("/test", options)
+      .then(response => response.json())
+      .then(data => {
+        console.log(data);
+        const main = document.getElementById('lession_1')
+        const main_2 = document.getElementById('lession_2')
+        data.filenames.forEach(element => {
+          const link = document.createElement('a')
+          link.append(element)
+          link.classList.add('subpage-link')
+          link.href = element
+          main.appendChild(link)
+
+        })
+        data.filenames2.forEach(element => {
+          const link = document.createElement('a')
+          link.append(element)
+          link.classList.add('subpage-link')
+          link.href = element
+          main_2.appendChild(link)
+        })
+
+      })
+      .catch(error => console.log(error));
+  </script>
+</body>
+
+</html>
