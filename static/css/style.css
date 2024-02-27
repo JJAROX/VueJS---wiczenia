@@ -80,3 +80,49 @@
 .objects-arrays-container {
   margin-left: 50px;
 }
+
+.car-div {
+  height: 150px;
+  width: 200px;
+  background-color: rgb(65, 183, 131);
+  color: rgb(52, 73, 94);
+  margin: 5px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.car-div2 {
+  height: 150px;
+  width: 200px;
+  background-color: rgb(52, 73, 94);
+  color: rgb(65, 183, 131);
+  margin: 5px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.red {
+  height: 400px;
+  width: 400px;
+  background-color: red;
+  color: yellow;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 5em;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  margin: 5px;
+}
+
+.blue {
+  height: 400px;
+  width: 400px;
+  background-color: blue;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 5em;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  margin: 5px;
+}
