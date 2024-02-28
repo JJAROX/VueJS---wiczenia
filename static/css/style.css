@@ -126,3 +126,14 @@
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   margin: 5px;
 }
+
+.vue-timer {
+  border: 8px solid rgb(66, 184, 132);
+  background-color: rgb(52, 73, 94);
+  color: white;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  height: 175px;
+  width: 175px;
+  text-align: center;
+  border-radius: 100%;
+}
