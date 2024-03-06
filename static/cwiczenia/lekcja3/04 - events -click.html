@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>04-Events</title>
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="app">
+    <h1 class="vue-title">{{ title }}</h1>
+    <h2 class="vue-message">{{ message }}</h2>
+    <h3 class="exercise" v-text="text"></h3>
+    <div class="buttons-div">
+      <button @click="setText('ddd')" class="fancy-ds-button-4">tekst 1</button>
+      <button @click="setText('eee')" class="fancy-ds-button-4">tekst 2</button>
+      <button @click="setText('fff')" class="fancy-ds-button-4">tekst 3</button>
+    </div>
+    <hr>
+    <h3 class="exercise" v-text="text"></h3>
+    <div class="buttons-div">
+      <button @click="logText" class="fancy-ds-button-4" :disabled="text=='fff'|| text=='eee' || text=='ddd'">tekst
+        1</button>
+      <button @click="logText" class="fancy-ds-button-4" :disabled="text=='eee'|| text=='ddd'">tekst 2</button>
+      <button @click="logText" class="fancy-ds-button-4" :disabled="text=='ddd'">tekst 3</button>
+    </div>
+  </div>
+  <script>
+    const app = Vue.createApp({
+
+      data() {
+        return {
+          title: "04: Events",
+          message: 'dyrektywy v-on:click',
+          text: 'ddd'
+        }
+      },
+      methods: {
+        setText(val) {
+          this.text = val
+        },
+        logText() {
+          console.log(this.text);
+        }
+      }
+    }).mount("#app")
+  </script>
+</body>
+
+</html>

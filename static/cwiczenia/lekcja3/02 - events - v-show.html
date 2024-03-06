@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>02-Events</title>
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="app">
+    <h1 class="vue-title">{{ title }}</h1>
+    <h2 class="vue-message">{{ message }}</h2>
+    <button @click="showHide" class="fancy-ds-button" v-text="showInfo"></button>
+    <div class="show-element">
+      <p v-show="show">element</p>
+    </div>
+  </div>
+  <script>
+    const app = Vue.createApp({
+
+      data() {
+        return {
+          title: "02: Events",
+          message: 'dyrektywa v-show - pokaż/ukryj element, o widoczności decyduje zmienna show',
+          show: true,
+          showInfo: 'ukryj'
+        }
+      },
+      methods: {
+        showHide() {
+          if (this.show === true) {
+            this.show = false
+            this.showInfo = 'pokaż'
+          } else if (this.show === false) {
+            this.show = true
+            this.showInfo = 'ukryj'
+          }
+        }
+      }
+    }).mount("#app")
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>03-Events</title>
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="app">
+    <h1 class="vue-title">{{ title }}</h1>
+    <h2 class="vue-message">{{ message }}</h2>
+    <ul>
+      <li v-for="item in items" v-bind:class="{ 'active':item.checked}">
+        {{item.text}}
+        <input type="checkbox" v-model="item.checked">
+      </li>
+    </ul>
+    <input @keyup="updateContext" @keyup.enter="addText" class="input-list" type="text" placeholder="dodaj element">
+    <button @click="addTextBtn" class="add-item-btn">add item</button>
+  </div>
+  <script>
+    const app = Vue.createApp({
+
+      data() {
+        return {
+          title: "03: Events",
+          message: 'dyrektywy v-on:click oraz v-on:keyup.enter => dodanie nowego elementu do tablicy',
+          items: [
+            { text: "element 1", checked: false },
+            { text: "element 2", checked: true },
+            { text: "element 3", checked: false },
+          ],
+          content: ''
+        }
+      },
+      methods: {
+        addText(element) {
+          console.log(element.value);
+          this.items.push({ text: element.target.value, checked: false })
+        },
+        updateContext(element) {
+          this.context = element.target.value
+          console.log(this.context);
+        },
+        addTextBtn() {
+          this.items.push({ text: this.context, checked: false })
+        }
+      }
+    }).mount("#app")
+  </script>
+</body>
+
+</html>

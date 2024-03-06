@@ -137,3 +137,197 @@
   text-align: center;
   border-radius: 100%;
 }
+
+.events-container {
+  height: 80%;
+  width: 67.5%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 0;
+  padding: 0;
+}
+
+.click-div {
+  width: fit-content;
+}
+
+.events-select {
+  background-color: blue;
+  color: white;
+  border-radius: 0.313rem;
+  border: none;
+  padding: 0.313rem;
+  margin-left: 0.625rem;
+  height: 2.188rem;
+  width: 5.625rem;
+}
+
+.select-div {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.select-value {
+  margin-left: 0.938rem;
+  color: blue;
+  font-size: 20px;
+  font-weight: bold;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.input-div {
+  display: flex;
+  flex-direction: row;
+}
+
+.checkbox {
+  width: 1.563rem;
+  height: 1.563rem;
+}
+
+.input-checbkox-div {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.buttons-div {
+  margin-top: 0.313rem;
+  display: flex;
+  flex-direction: row;
+  margin-left: 0.625rem;
+  align-items: center;
+}
+
+.fancy-ds-button {
+  background-color: blue;
+  color: white;
+  border-radius: 0.5rem;
+  border: none;
+  width: fit-content;
+  cursor: pointer;
+  height: 2.188rem;
+  padding-inline: 0.938rem;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.show-element {
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  margin-top: 0.938rem;
+  height: 4.063rem;
+  width: 75rem;
+  border: 0.125rem solid black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.188rem;
+  text-decoration: underline;
+  letter-spacing: 0.125rem;
+}
+
+.active {
+  color: red;
+  font-size: 1.875rem;
+}
+
+.input-list {
+  background-color: rgb(177, 177, 177);
+  border: none;
+  border-radius: 0.625rem;
+  color: #000000;
+  font-weight: bold;
+  margin-right: 0.938rem;
+  width: 10.938rem;
+  padding: 0.469rem;
+}
+
+.add-item-btn {
+  background-color: blue;
+  color: white;
+  border-radius: 0.625rem;
+  padding: 0.469rem;
+  border: none;
+  cursor: pointer;
+}
+
+.buttons-div {
+  display: flex;
+  flex-direction: row;
+}
+
+.fancy-ds-button-4 {
+  margin-right: 0.938rem;
+  background-color: blue;
+  color: white;
+  border-radius: 0.5rem;
+  border: none;
+  width: fit-content;
+  cursor: pointer;
+  height: 2.188rem;
+  padding-inline: 0.938rem;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.fancy-ds-button-4:disabled {
+  background-color: gray;
+}
+
+table {
+  border: none;
+  background-color: white;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+th {
+  color: blue;
+  border: 1px solid white;
+  background-color: rgb(228, 228, 228);
+  text-align: center;
+}
+
+td {
+  border: 1px solid white;
+  background-color: rgb(228, 228, 228);
+  color: black;
+  text-align: center;
+}
+
+.shop-td-button {
+  background-color: blue;
+  color: white;
+  text-decoration: underline;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  border: none;
+  padding: 0.625rem 2.188rem;
+  border-radius: 0.625rem;
+  font-size: 1.25rem;
+  cursor: pointer;
+}
+
+.empty-table {
+  color: blue;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+.table-input {
+  border: none;
+  width: 45rem;
+  height: 1.563rem;
+  background-color: rgb(169, 168, 168);
+  color: white;
+  font-size: 1.125rem;
+  font-weight: bold;
+  padding: 0.313rem;
+  border-radius: 0.625rem;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.table-input::placeholder {
+  color: rgb(228, 228, 228);
+}

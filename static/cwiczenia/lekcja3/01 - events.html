@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>01-Events - simple</title>
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="app">
+    <h1 class="vue-title">{{ title }}</h1>
+    <h2 class="vue-message">{{ message }}</h2>
+    <div class="events-container">
+      <div class="left-side">
+        <h3 class="exercise">cw 01 - kliknij w diva</h3>
+        <div @click="divClick" class="click-div">CLICK ON ME</div>
+        <h3 class="exercise">cw 02 - wartość (value) z selecta</h3>
+        <div class="select-div">
+          <select class="events-select" v-model="selectValue">
+            <option>option 1</option>
+            <option>option 2</option>
+            <option>option 3</option>
+          </select>
+          <p class="select-value" v-text="selectValue"></p>
+        </div>
+        <h3 class="exercise">cw 03 - wartość (value) z range</h3>
+        <div class="input-div">
+          <input @change="rangeValue" type="range" min="0" max="100">
+          <p class="select-value" v-text="inputValue"></p>
+        </div>
+      </div>
+      <div class="right-side">
+        <h3 class="exercise">cw 04 - wartość (value) z checkboxa</h3>
+        <div class="input-checbkox-div">
+          <input @change="checkboxFnc" class="checkbox" type="checkbox">
+          <p class="select-value" v-text="checkboxValue"></p>
+        </div>
+        <h3 class="exercise">cw 05 - klik buttona</h3>
+        <div class="buttons-div">
+          <button @click="increaseCounter" class="fancy-ds-button">button 1 - powiększa wartość licznika</button>
+          <p class="select-value" v-text="counterValue"></p>
+        </div>
+        <div class="buttons-div">
+          <button @click="counterPower" class="fancy-ds-button">button 2 - liczy 2 do potęgi licznika</button>
+          <p class="select-value" v-text="result"></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  </div>
+  <script>
+    const app = Vue.createApp({
+
+      data() {
+        return {
+          title: "01:Events - simple",
+          message: 'events => zapis zdarzenia v-on:click jest równoważny @click',
+          selectValue: 'Wybierz coś z selecta',
+          inputValue: 50,
+          checkboxValue: false,
+          counterValue: 0,
+          result: 0
+        }
+      },
+      methods: {
+        divClick() {
+          alert('Klik')
+        },
+        rangeValue(element) {
+          this.inputValue = parseInt(element.target.value)
+        },
+        checkboxFnc(element) {
+          this.checkboxValue = element.target.checked
+        },
+        increaseCounter() {
+          this.counterValue++
+        },
+        counterPower() {
+          this.result = 2 ** this.counterValue
+        }
+      }
+    }).mount("#app")
+  </script>
+</body>
+
+</html>

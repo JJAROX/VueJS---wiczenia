@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>06-Events</title>
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="app">
+    <h1 class="vue-title">{{ title }}</h1>
+    <h2 class="vue-message">{{ message }}</h2>
+    <table v-if="products.length>0">
+      <tr>
+        <th>lp</th>
+        <th>produkt</th>
+        <th>cena</th>
+        <th>koszyk</th>
+      </tr>
+      <tr v-for="(item,i) in products">
+        <td style="height: 4.688rem; width: 4.688rem;" v-text="i+1"></td>
+        <td style="height: 4.688rem; width: 13.875rem;" v-text="item.product"></td>
+        <td style="height: 4.688rem; width: 9.375rem;" v-text="item.price"></td>
+        <td style="height: 4.688rem; width: 50rem;"><button class="shop-td-button" v-text="item.selected"
+            @click="addToCart(i)"></button></td>
+      </tr>
+    </table>
+    <p class="empty-table" v-else>brak produktów</p>
+  </div>
+  <script>
+    const app = Vue.createApp({
+
+      data() {
+        return {
+          title: "06: Events",
+          message: 'koszyk - dyrektywy v-for v-if v-else',
+          products: [
+            { product: "książka", price: 100, selected: "dodaj do koszyka" },
+            { product: "płyta CD", price: 200, selected: "dodaj do koszyka" },
+            { product: "mleko", price: 300, selected: "dodaj do koszyka" },
+            { product: "buty", price: 400, selected: "dodaj do koszyka" },
+          ]
+        }
+      },
+      methods: {
+        addToCart(id) {
+          console.log(this.products[id]);
+          this.products[id].selected = "w koszyku"
+        }
+      }
+    }).mount("#app")
+  </script>
+</body>
+
+</html>
