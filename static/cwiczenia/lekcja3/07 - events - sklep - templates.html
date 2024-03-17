@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>08-Template</title>
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="app">
+    <h1 class="vue-title">{{ title }}</h1>
+    <h2 class="vue-message">{{ message }}</h2>
+    <div class="buttons-div" style="margin-bottom: 1.563rem;">
+      <button class="fancy-ds-button" style="margin-right: 0.938rem;">opróżnij sklep komputerowy</button>
+      <button class="fancy-ds-button">opróżnij sklep fotograficzny</button>
+    </div>
+    <h2 class="vue-message">Sklep 1 - Akcesoria komputerowe</h2>
+    <table class="shop-3-table">
+      <tr class="shop-3-trhead">
+        <td>Lp.</td>
+        <td>Produkt</td>
+        <td>Cena</td>
+        <td>Koszyk</td>
+      </tr>
+      <template v-for="computer of computers">
+        <tr class="shop-3-tr">
+          <td v-text="computer.id"></td>
+          <td v-text="computer.product"></td>
+          <td>{{computer.price}} zł</td>
+          <td v-text="computer.selected"></td>
+        </tr>
+        <tr>
+          <td colspan="4" v-text="computer.availability"></td>
+        </tr>
+      </template>
+    </table>
+  </div>
+  <script>
+    const app = Vue.createApp({
+
+      data() {
+        return {
+          title: "08: template",
+          message: 'template - grupowanie elementów HTML wewnątrz v-for',
+          computers: [
+            { id: 1, product: "Komputer stacjonarny", price: 2150, selected: "dodaj do koszyka", availability: 'dostępny' },
+            { id: 2, product: "Laptop", price: 2550, selected: "w koszyku", availability: 'dostępny za 2 tygodnie' },
+            { id: 3, product: "Monitor", price: 1400, selected: "dodaj do koszyka", availability: 'dostępny' },
+            { id: 4, product: "Myszka", price: 50, selected: "w koszyku", availability: 'dostępny za 1 dzień' },
+          ]
+        }
+      },
+      methods: {
+      }
+    }).mount("#app")
+  </script>
+</body>
+
+</html>

@@ -22,19 +22,20 @@
         <th>komentarz do zakupu</th>
       </tr>
       <tr v-for="(item,i) in products">
-        <td style="height: 4.688rem; width: 2.5rem;" v-text="i+1"></td>
+        <td style="height: 4.688rem; width: 2.5rem;" v-text="item.id"></td>
         <td style="height: 4.688rem; width: 7rem;" v-text="item.product"></td>
         <td style="height: 4.688rem; width: 4.5rem;" v-text="item.price"></td>
-        <td style="height: 4.688rem; width: 20rem;"><button class="shop-td-button" v-text="item.selected"
-            @click="addToCart(i)"></button></td>
+        <td style="height: 4.688rem; width: 20rem; text-decoration: underline;" v-text="item.selected"></td>
         <td style="height: 4.688rem; width: 50rem;"><input class="table-input" type="text"
             placeholder="dodaj komentarz"></td>
       </tr>
       <tr>
-        <button>WG A-Z</button>
-        <button>a</button>
-        <button>a</button>
-        <button>a</button>
+        <td style="padding: 0.938rem;" colspan="5">
+          <button class="shop-td-button-2" @click="sortAZ">WG A-Z</button>
+          <button class="shop-td-button-2" @click="sortID">WG ID</button>
+          <button class="shop-td-button-2" @click="sortPrice">WG CENY</button>
+          <button class="shop-td-button-2" @click="sortCart">WG KOSZYKA</button>
+        </td>
       </tr>
     </table>
     <p class="empty-table" v-else>brak produktów</p>
@@ -47,17 +48,41 @@
           title: "07: Events",
           message: 'koszyk - dyrektywy v-for v-if v-else',
           products: [
-            { product: "książka", price: 100, selected: "dodaj do koszyka" },
-            { product: "płyta CD", price: 200, selected: "dodaj do koszyka" },
-            { product: "mleko", price: 300, selected: "dodaj do koszyka" },
-            { product: "buty", price: 400, selected: "dodaj do koszyka" },
+            { id: 1, product: "książka", price: 100, selected: "dodaj do koszyka" },
+            { id: 2, product: "płyta CD", price: 200, selected: "w koszyku" },
+            { id: 3, product: "mleko", price: 300, selected: "dodaj do koszyka" },
+            { id: 4, product: "buty", price: 400, selected: "w koszyku" },
           ]
         }
       },
       methods: {
-        addToCart(id) {
-          console.log(this.products[id]);
-          this.products[id].selected = "w koszyku"
+        sortAZ() {
+          this.products.sort((a, b) => {
+            if (a.product < b.product) return -1;
+            if (a.product > b.product) return 1;
+            return 0;
+          })
+        },
+        sortID() {
+          this.products.sort((a, b) => {
+            if (a.id < b.id) return -1;
+            if (a.id > b.id) return 1;
+            return 0;
+          })
+        },
+        sortPrice() {
+          this.products.sort((a, b) => {
+            if (a.price < b.price) return -1;
+            if (a.price > b.price) return 1;
+            return 0;
+          })
+        },
+        sortCart() {
+          this.products.sort((a, b) => {
+            if (a.selected < b.selected) return -1;
+            if (a.selected > b.selected) return 1;
+            return 0;
+          })
         }
       }
     }).mount("#app")

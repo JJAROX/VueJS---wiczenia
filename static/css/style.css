@@ -331,3 +331,42 @@ td {
 .table-input::placeholder {
   color: rgb(228, 228, 228);
 }
+
+.shop-td-button-2 {
+  background-color: blue;
+  color: white;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  border: none;
+  padding: 0.625rem 2.188rem;
+  border-radius: 0.625rem;
+  font-size: 1.25rem;
+  cursor: pointer;
+  margin-right: 0.938rem;
+}
+
+.template:nth-child(even) {
+  background-color: red;
+}
+
+
+.shop-3-trhead td {
+  background-color: white;
+}
+
+.shop-3-tr {
+  background-color: white;
+  margin: 0;
+  border: none;
+}
+
+.shop-3-tr td {
+  background-color: transparent;
+  padding-inline: 1.875rem;
+  border: none;
+  margin: 0;
+}
+
+.shop-3-table {
+  margin: 0;
+  border: none;
+}
