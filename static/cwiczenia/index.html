@@ -19,6 +19,9 @@
   <h2 class="lesson-title">lekcja-3-events-methods</h2>
   <div class="main" id="lession_3">
   </div>
+  <h2 class="lesson-title">lekcja-4-forms</h2>
+  <div class="main" id="lession_4">
+  </div>
   <script>
     const options = {
       method: "GET",
@@ -33,6 +36,7 @@
         const main = document.getElementById('lession_1')
         const main_2 = document.getElementById('lession_2')
         const main_3 = document.getElementById('lession_3')
+        const main_4 = document.getElementById('lession_4')
         data.filenames.forEach(element => {
           const link = document.createElement('a')
           link.append(element)
@@ -54,6 +58,13 @@
           link.classList.add('subpage-link')
           link.href = element
           main_3.appendChild(link)
+        })
+        data.filenames4.forEach(element => {
+          const link = document.createElement('a')
+          link.append(element)
+          link.classList.add('subpage-link')
+          link.href = element
+          main_4.appendChild(link)
         })
 
       })
