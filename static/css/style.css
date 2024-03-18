@@ -370,3 +370,16 @@ td {
   margin: 0;
   border: none;
 }
+
+.forms-container {
+  display: inline-flex;
+}
+
+.forms-03-box {
+  display: flex;
+  flex-direction: column;
+}
+
+.accept-btn {
+  width: 6.25rem;
+}
