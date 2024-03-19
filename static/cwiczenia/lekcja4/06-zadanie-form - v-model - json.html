@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>05-Forms</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+    <div id="app">
+        <h1 class="vue-title">{{ title }}</h1>
+        <h2 class="vue-message">{{ message }}</h2>
+        <div class="forms-container">
+            <div class="forms-03-box" style="margin-right:1.875rem;">
+                <h3 class="exercise">Akcesoria</h3>
+                <template v-for="(product,i) in products">
+                    <div class="products-04-div"> <input @change="checkCheckbox" class="products-04-checkbox"
+                            type="checkbox" :id=i>
+                        <label :for=i>{{product.name}}</label>
+                        <p class="products-04-p"> {{product.price}} {{convertCurrency(product.currency)}}</p>
+                    </div>
+                </template>
+
+            </div>
+            <div class="forms-03-box" style="margin-right:1.875rem;">
+                <h3 class="exercise">Forma odbioru</h3>
+                <div v-for="(item,i) in orderOptions"> <input @change="checkRadio" class="radio" type="radio" :id=i
+                        name="order" :value="item">
+                    <label :for=i>{{item}}</label>
+
+
+                </div>
+                <select v-model="selectedOrder">
+                    <option v-for="(item,i) in orderOptions">{{item}}</option>
+                </select>
+                <p>Sposób dostawy: {{selectedOrder}} </p>
+            </div>
+            <div class="forms-03-box">
+                <h3 class="exercise">Potwierdzenie</h3>
+                <div>
+                    <input @change="checkAccept" class="radio" type="checkbox" id="potw">
+                    <label for="potw">Potwierdzam zgodność danych podanych w formularzu kontaktowym</label>
+                    <p v-text="accept"></p>
+                </div>
+                <button class="accept-btn" type="submit" :disabled="!isReady">Wyślij</button>
+            </div>
+        </div>
+
+    </div>
+    <script>
+        const app = Vue.createApp({
+
+            data() {
+                return {
+                    title: "06: Zadanie",
+                    message: 'json from server',
+                    products: [
+                        { name: "Myszka", checked: 'nie', price: 30, currency: "PLN" },
+                        { name: "Laptop", checked: 'nie', price: 2500, currency: "GBP" },
+                        { name: "Komputer", checked: 'nie', price: 4000, currency: "PLN" },
+                        { name: "Monitor", checked: 'nie', price: 1000, currency: "GBP" },
+                        { name: "Głośniki", checked: 'nie', price: 600, currency: "USD" }
+                    ],
+                    orderOptions: [
+                        'kurier', 'poczta', 'osobiście'
+                    ],
+                    check: false,
+                    check2: false,
+                    accept: false,
+                    selectedOrder: 'None'
+                }
+            },
+            computed: {
+                isReady() {
+                    if (this.check === true && this.check2 === true && this.accept === true) {
+                        return true
+                    } else if (this.check === false || this.check2 === false || this.accept === false) {
+                        return false
+                    }
+                }
+            },
+            methods: {
+                checkCheckbox(e) {
+                    if (e.target.checked === true) {
+                        console.log('wow mega');
+                        this.check = true
+                    } else if (e.target.checked === false) {
+                        console.log('wow mega');
+                        this.check = false
+                    }
+                },
+                checkRadio(e) {
+                    console.log(e.target.value);
+                    this.selectedOrder = e.target.value
+                    if (e.target.checked === true) {
+                        console.log('wow mega2');
+                        this.check2 = true
+                    } else if (e.target.checked === false) {
+                        console.log('wow mega2');
+                        this.check2 = false
+                    }
+                },
+                checkAccept(e) {
+                    if (e.target.checked === true) {
+                        console.log('wow mega3');
+                        this.accept = true
+                    } else if (e.target.checked === false) {
+                        console.log('wow mega3');
+                        this.accept = false
+                    }
+                },
+                convertCurrency(currency) {
+                    console.log(currency);
+                    switch (currency) {
+                        case "PLN":
+                            return "ZŁOTYCH"
+                            break;
+                        case "GBP":
+                            return "FUNTÓW"
+                            break;
+                        case "USD":
+                            return "DOLARÓW"
+                            break;
+
+                        default:
+                            break;
+                    }
+                }
+            }
+        }).mount("#app")
+    </script>
+</body>
+
+</html>
