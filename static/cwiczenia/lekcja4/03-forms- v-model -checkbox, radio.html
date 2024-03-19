@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>04-Forms</title>
+    <title>03-Forms</title>
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <link rel="stylesheet" href="/css/style.css">
 </head>
@@ -25,21 +25,16 @@
             <div class="forms-03-box" style="margin-right:1.875rem;">
                 <h3 class="exercise">Forma odbioru</h3>
                 <div v-for="(item,i) in orderOptions"> <input @change="checkRadio" class="radio" type="radio" :id=i
-                        name="order" :value="item">
+                        name="order">
                     <label :for=i>{{item}}</label>
 
                 </div>
-                <select v-model="selectedOrder">
-                    <option v-for="(item,i) in orderOptions">{{item}}</option>
-                </select>
-                <p>Sposób dostawy: {{selectedOrder}} </p>
             </div>
             <div class="forms-03-box">
                 <h3 class="exercise">Potwierdzenie</h3>
                 <div>
                     <input @change="checkAccept" class="radio" type="checkbox" id="potw">
                     <label for="potw">Potwierdzam zgodność danych podanych w formularzu kontaktowym</label>
-                    <p v-text="accept"></p>
                 </div>
                 <button class="accept-btn" type="submit" :disabled="!isReady">Wyślij</button>
             </div>
@@ -51,8 +46,8 @@
 
             data() {
                 return {
-                    title: "04:Forms-koszyk",
-                    message: 'checkbox, select, form, v-model',
+                    title: "03:Forms-koszyk",
+                    message: 'v-model, checkbox,radio',
                     accessories: [
                         'myszka', 'laptop', 'komputer stacjonarny'
                     ],
@@ -61,8 +56,7 @@
                     ],
                     check: false,
                     check2: false,
-                    accept: false,
-                    selectedOrder: 'None'
+                    accept: false
                 }
             },
             computed: {
@@ -85,8 +79,6 @@
                     }
                 },
                 checkRadio(e) {
-                    console.log(e.target.value);
-                    this.selectedOrder = e.target.value
                     if (e.target.checked === true) {
                         console.log('wow mega2');
                         this.check2 = true
