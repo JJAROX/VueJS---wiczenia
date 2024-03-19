@@ -383,3 +383,19 @@ td {
 .accept-btn {
   width: 6.25rem;
 }
+
+.products-04-div {
+  width: 7rem;
+  height: 4rem;
+  margin: 0.313rem;
+  background-color: rgb(177, 177, 177);
+}
+
+.products-04-checkbox {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.products-04-p {
+  color: aqua;
+}
