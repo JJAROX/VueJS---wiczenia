@@ -13,23 +13,35 @@
     <div id="app">
         <h1 class="vue-title">{{ title }}</h1>
         <h2 class="vue-message">{{ message }}</h2>
-        <div class="form-container">
-            <h3 class="exercise" v-text="message2"></h3>
-            <h3 class="exercise" v-text="message3"></h3>
+        <div class="forms-02-container">
+            <div class="left-side-forms-2">
+                <h3 class="exercise" v-text="message2"></h3>
+                <div><input class="left-side-input-forms-2" type="text" id="imie" placeholder="Imie" v-model="name">
+                    <label for="imie">Długość {{writeLengths(name)}} </label>
+                </div>
+                <div><input class="left-side-input-forms-2" type="text" id="nazwisko" placeholder="Nazwisko"
+                        v-model="surname">
+                    <label for="nazwisko">Dlugosc {{writeLengths(surname)}} </label>
+                </div>
+                <div><input class="left-side-input-forms-2" type="text" id="zawod" placeholder="Zawód" v-model="job">
+                    <label for="zawod">Dlugosc {{writeLengths(job)}}</label>
+                </div>
+                <div> <input class="left-side-input-forms-2" type="text" id="wynagrodzenie" placeholder="Wynagrodzenie"
+                        v-model="price">
+                    <label for="wynagrodzenie">Dlugosc {{writeLengths(price)}}</label>
+                </div>
+                <button class="submit-btn-forms-2" type="submit" :disabled="!isReady">Wyślij</button>
+            </div>
+            <div class="right-side-forms-2">
+                <h3 class="exercise" v-text="message3"></h3>
+                <p> <span class="span-forms-2">Imie:</span> {{name}}</p>
+                <p><span class="span-forms-2">Nazwisko:</span> {{surname}}</p>
+                <p> <span class="span-forms-2">Zawód:</span> {{job}}</p>
+                <p> <span class="span-forms-2">Wynagrodzenie:</span> {{price}}</p>
+            </div>
+
         </div>
-        <input type="text" id="imie" placeholder="Imie" v-model="name">
-        <label for="imie">Długość {{writeLengths(name)}} </label>
-        <input type="text" id="nazwisko" placeholder="Nazwisko" v-model="surname">
-        <label for="nazwisko">Dlugosc {{writeLengths(surname)}} </label>
-        <input type="text" id="zawod" placeholder="Zawód" v-model="job">
-        <label for="zawod">Dlugosc {{writeLengths(job)}}</label>
-        <input type="text" id="wynagrodzenie" placeholder="Wynagrodzenie" v-model="price">
-        <label for="wynagrodzenie">Dlugosc {{writeLengths(price)}}</label>
-        <button type="submit" :disabled="!isReady">Wyślij</button>
-        <p>Imie: {{name}}</p>
-        <p>Nazwisko: {{surname}}</p>
-        <p>Zawód: {{job}}</p>
-        <p>Wynagrodzenie: {{price}}</p>
+
     </div>
 
     </div>

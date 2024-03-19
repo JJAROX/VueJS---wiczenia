@@ -15,11 +15,11 @@
         <h2 class="vue-message">{{ message }}</h2>
         <div class="form-container">
             <form action="/aaa" method="POST" @reset="onReset" @submit="onSubmit">
-                <input type="text" placeholder="wpisz text">
-                <button type="reset">Zresetuj</button>
-                <button type="submit">Wyślij zapytanie</button>
-                <input type="checkbox" id="checkbox" v-model="checked">
-                <label for="checkbox">blokada zdarzeń formularza</label>
+                <input class="input-text-01-forms" type="text" placeholder="wpisz text">
+                <button class="fancy-ds-button" type="reset" style="margin-right: 0.938rem;">Zresetuj</button>
+                <button class="fancy-ds-button" type="submit" style="margin-right: 0.938rem;">Wyślij zapytanie</button>
+                <input class="checkbox-01-forms" type="checkbox" id="checkbox" v-model="checked">
+                <label class="label-01-forms" for="checkbox">blokada zdarzeń formularza</label>
             </form>
         </div>
         <h3 class="exercise" v-if="formInfo==null"></h3>

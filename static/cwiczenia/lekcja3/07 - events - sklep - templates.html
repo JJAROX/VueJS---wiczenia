@@ -14,29 +14,73 @@
     <h1 class="vue-title">{{ title }}</h1>
     <h2 class="vue-message">{{ message }}</h2>
     <div class="buttons-div" style="margin-bottom: 1.563rem;">
-      <button class="fancy-ds-button" style="margin-right: 0.938rem;">opróżnij sklep komputerowy</button>
-      <button class="fancy-ds-button">opróżnij sklep fotograficzny</button>
+      <button @click="clearComputers" class="fancy-ds-button" style="margin-right: 0.938rem;">opróżnij sklep
+        komputerowy</button>
+      <button @click="clearPhotography" class="fancy-ds-button">opróżnij sklep fotograficzny</button>
     </div>
-    <h2 class="vue-message">Sklep 1 - Akcesoria komputerowe</h2>
-    <table class="shop-3-table">
-      <tr class="shop-3-trhead">
-        <td>Lp.</td>
-        <td>Produkt</td>
-        <td>Cena</td>
-        <td>Koszyk</td>
-      </tr>
-      <template v-for="computer of computers">
-        <tr class="shop-3-tr">
-          <td v-text="computer.id"></td>
-          <td v-text="computer.product"></td>
-          <td>{{computer.price}} zł</td>
-          <td v-text="computer.selected"></td>
-        </tr>
-        <tr>
-          <td colspan="4" v-text="computer.availability"></td>
-        </tr>
-      </template>
-    </table>
+    <div class="all-shop" v-if="computers.length>0 || photography.length>0">
+      <div class="shop-1" v-if="computers.length>0">
+        <h2 class="vue-message">Sklep 1 - Akcesoria komputerowe</h2>
+        <table class="shop-3-table">
+          <tr class="shop-3-trhead">
+            <td>Lp.</td>
+            <td>Produkt</td>
+            <td>Cena</td>
+            <td>Koszyk</td>
+          </tr>
+          <template v-for="computer of computers">
+            <tr class="shop-3-tr">
+              <td v-text="computer.id"></td>
+              <td v-text="computer.product"></td>
+              <td>{{computer.price}} zł</td>
+              <td v-text="computer.selected"></td>
+            </tr>
+            <tr>
+              <td colspan="4" v-text="computer.availability"></td>
+            </tr>
+          </template>
+          <tr>
+            <td class="td-with-btns" colspan="4">
+              <button class="fancy-ds-button">Domyślny układ</button>
+              <button class="fancy-ds-button">Alfabetycznie</button>
+              <button class="fancy-ds-button">Wg ceny</button>
+              <button class="fancy-ds-button">Wg zawartości koszyka</button>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="shop-2" v-if="photography.length>0">
+        <h2 class="vue-message">Sklep 2 - Akcesoria fotograficzne</h2>
+        <table class="shop-3-table">
+          <tr class="shop-3-trhead">
+            <td>Lp.</td>
+            <td>Produkt</td>
+            <td>Cena</td>
+            <td>Koszyk</td>
+          </tr>
+          <template v-for="photo of photography">
+            <tr class="shop-3-tr">
+              <td v-text="photo.id"></td>
+              <td v-text="photo.product"></td>
+              <td>{{photo.price}} zł</td>
+              <td v-text="photo.selected"></td>
+            </tr>
+            <tr>
+              <td colspan="4" v-text="photo.availability"></td>
+            </tr>
+          </template>
+          <tr>
+            <td class="td-with-btns" colspan="4">
+              <button class="fancy-ds-button">Domyślny układ</button>
+              <button class="fancy-ds-button">Alfabetycznie</button>
+              <button class="fancy-ds-button">Wg ceny</button>
+              <button class="fancy-ds-button">Wg zawartości koszyka</button>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <h3 class="exercise" v-else>Brak produktów w sklepach...</h3>
   </div>
   <script>
     const app = Vue.createApp({
@@ -50,10 +94,26 @@
             { id: 2, product: "Laptop", price: 2550, selected: "w koszyku", availability: 'dostępny za 2 tygodnie' },
             { id: 3, product: "Monitor", price: 1400, selected: "dodaj do koszyka", availability: 'dostępny' },
             { id: 4, product: "Myszka", price: 50, selected: "w koszyku", availability: 'dostępny za 1 dzień' },
+          ],
+          photography: [
+            { id: 1, product: "Body Nikon D300S", price: 1000, selected: "dodaj do koszyka", availability: 'dostępny' },
+            { id: 2, product: "Obiektyw", price: 1500, selected: "w koszyku", availability: 'dostępny za 5 godzin' },
+            { id: 3, product: "Statyw", price: 200, selected: "w koszyku", availability: 'dostępny' },
+            { id: 4, product: "Torba fotograficzna", price: 300, selected: "w koszyku", availability: 'dostępny' },
+            { id: 5, product: "Zdalny wyzwalacz migawki", price: 300, selected: "dodaj do koszyka", availability: 'dostępny za 5 godzin' },
+            { id: 6, product: "Zestaw kart pamięci", price: 150, selected: "dodaj do koszyka", availability: 'dostępny' },
+
           ]
         }
       },
       methods: {
+        clearComputers() {
+          this.computers.length = 0
+          console.log(this.computers.length, this.photography.length);
+        },
+        clearPhotography() {
+          this.photography.length = 0
+        }
       }
     }).mount("#app")
   </script>

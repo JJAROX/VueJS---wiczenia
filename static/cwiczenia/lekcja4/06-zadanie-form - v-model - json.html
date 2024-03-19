@@ -13,39 +13,23 @@
     <div id="app">
         <h1 class="vue-title">{{ title }}</h1>
         <h2 class="vue-message">{{ message }}</h2>
-        <div class="forms-container">
-            <div class="forms-03-box" style="margin-right:1.875rem;">
-                <h3 class="exercise">Akcesoria</h3>
-                <template v-for="(product,i) in products">
-                    <div class="products-04-div"> <input @change="checkCheckbox" class="products-04-checkbox"
-                            type="checkbox" :id=i>
-                        <label :for=i>{{product.name}}</label>
-                        <p class="products-04-p"> {{product.price}} {{convertCurrency(product.currency)}}</p>
-                    </div>
-                </template>
-
-            </div>
-            <div class="forms-03-box" style="margin-right:1.875rem;">
-                <h3 class="exercise">Forma odbioru</h3>
-                <div v-for="(item,i) in orderOptions"> <input @change="checkRadio" class="radio" type="radio" :id=i
-                        name="order" :value="item">
-                    <label :for=i>{{item}}</label>
-
-
+        <div class="forms-06-container">
+            <h2 class="vue-message" style="margin-left: 0.938rem;">Dodaj do koszyka</h2>
+            <h3 class="exercise" style="margin-left: 0.938rem;">Produkty:</h3>
+            <div class="checkboxes-div">
+                <div class="inplabel-div" v-for="(product,i) in products">
+                    <input type="checkbox" :id=i>
+                    <label :for=i v-text="product"></label>
                 </div>
-                <select v-model="selectedOrder">
-                    <option v-for="(item,i) in orderOptions">{{item}}</option>
-                </select>
-                <p>Sposób dostawy: {{selectedOrder}} </p>
             </div>
-            <div class="forms-03-box">
-                <h3 class="exercise">Potwierdzenie</h3>
-                <div>
-                    <input @change="checkAccept" class="radio" type="checkbox" id="potw">
-                    <label for="potw">Potwierdzam zgodność danych podanych w formularzu kontaktowym</label>
-                    <p v-text="accept"></p>
+            <h3 class="exercise" style="margin-left: 0.938rem;">Sposób dostawy: {{option}}</h3>
+            <div class="radios-div">
+                <div class="radiolabel-div" v-for="(order,i) in orderOptions">
+                    <img :src=order.img alt="zdjencie" height="50" width="100">
+                    <input @change="checkRadio" type="radio" name="order-options" :id="i" :value="order.name">
+                    <label :for="i" v-text="order.name"></label>
                 </div>
-                <button class="accept-btn" type="submit" :disabled="!isReady">Wyślij</button>
+
             </div>
         </div>
 
@@ -58,15 +42,16 @@
                     title: "06: Zadanie",
                     message: 'json from server',
                     products: [
-                        { name: "Myszka", checked: 'nie', price: 30, currency: "PLN" },
-                        { name: "Laptop", checked: 'nie', price: 2500, currency: "GBP" },
-                        { name: "Komputer", checked: 'nie', price: 4000, currency: "PLN" },
-                        { name: "Monitor", checked: 'nie', price: 1000, currency: "GBP" },
-                        { name: "Głośniki", checked: 'nie', price: 600, currency: "USD" }
+                        'Myszka', 'Laptop', 'Komputer', 'Monitor', 'Głośniki', 'Laptop', 'Tablet', 'Komórka', 'Pamięć', 'Obudowa', 'RAM', 'Windows', 'Corel', 'Photoshop', 'Kabel', 'Telewizor'
                     ],
                     orderOptions: [
-                        'kurier', 'poczta', 'osobiście'
+                        { name: 'Kurier DPD', img: 'gfx/dpd.svg' },
+                        { name: 'inPOST', img: 'gfx/inpost.png' },
+                        { name: 'Paczkomaty', img: 'gfx/locker.png' },
+                        { name: 'Poczta Polska', img: 'gfx/poczta.png' },
+                        { name: 'Osobiście', img: 'gfx/locker.png' }
                     ],
+                    option: '',
                     check: false,
                     check2: false,
                     accept: false,
@@ -94,7 +79,7 @@
                 },
                 checkRadio(e) {
                     console.log(e.target.value);
-                    this.selectedOrder = e.target.value
+                    this.option = e.target.value
                     if (e.target.checked === true) {
                         console.log('wow mega2');
                         this.check2 = true

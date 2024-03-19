@@ -13,8 +13,8 @@
     <div id="app">
         <h1 class="vue-title">{{ title }}</h1>
         <h2 class="vue-message">{{ message }}</h2>
-        <div class="forms-container">
-            <div class="forms-03-box">
+        <div class="forms-04-container">
+            <div class="forms-03-box" style="margin-left: 0.938rem;">
                 <h3 class="exercise">Akcesoria</h3>
                 <div v-for="(item,i) in accessories"> <input @change="checkCheckbox" class="radio" type="checkbox"
                         :id=i>
@@ -29,7 +29,7 @@
                     <label :for=i>{{item}}</label>
 
                 </div>
-                <select v-model="selectedOrder">
+                <select class="events-select" v-model="selectedOrder">
                     <option v-for="(item,i) in orderOptions">{{item}}</option>
                 </select>
                 <p>Sposób dostawy: {{selectedOrder}} </p>
@@ -41,7 +41,8 @@
                     <label for="potw">Potwierdzam zgodność danych podanych w formularzu kontaktowym</label>
                     <p v-text="accept"></p>
                 </div>
-                <button class="accept-btn" type="submit" :disabled="!isReady">Wyślij</button>
+                <button style="margin-top: 0.75rem;" class="submit-btn-forms-3" type="submit"
+                    :disabled="!isReady">Wyślij</button>
             </div>
         </div>
 

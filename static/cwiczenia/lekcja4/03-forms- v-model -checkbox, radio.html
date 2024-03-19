@@ -13,8 +13,8 @@
     <div id="app">
         <h1 class="vue-title">{{ title }}</h1>
         <h2 class="vue-message">{{ message }}</h2>
-        <div class="forms-container">
-            <div class="forms-03-box">
+        <div class="forms-03-container">
+            <div class="forms-03-box" style="margin-left: 0.938rem;">
                 <h3 class="exercise">Akcesoria</h3>
                 <div v-for="(item,i) in accessories"> <input @change="checkCheckbox" class="radio" type="checkbox"
                         :id=i>
@@ -36,7 +36,8 @@
                     <input @change="checkAccept" class="radio" type="checkbox" id="potw">
                     <label for="potw">Potwierdzam zgodność danych podanych w formularzu kontaktowym</label>
                 </div>
-                <button class="accept-btn" type="submit" :disabled="!isReady">Wyślij</button>
+                <button style="margin-top: 1.875rem;" class="submit-btn-forms-3" type="submit"
+                    :disabled="!isReady">Wyślij</button>
             </div>
         </div>
 

@@ -13,7 +13,7 @@
     <div id="app">
         <h1 class="vue-title">{{ title }}</h1>
         <h2 class="vue-message">{{ message }}</h2>
-        <div class="forms-container">
+        <div class="forms-05-container">
             <div class="forms-03-box" style="margin-right:1.875rem;">
                 <h3 class="exercise">Akcesoria</h3>
                 <template v-for="(product,i) in products">
@@ -33,7 +33,7 @@
 
 
                 </div>
-                <select v-model="selectedOrder">
+                <select v-model="selectedOrder" class="events-select">
                     <option v-for="(item,i) in orderOptions">{{item}}</option>
                 </select>
                 <p>Sposób dostawy: {{selectedOrder}} </p>
@@ -45,7 +45,8 @@
                     <label for="potw">Potwierdzam zgodność danych podanych w formularzu kontaktowym</label>
                     <p v-text="accept"></p>
                 </div>
-                <button class="accept-btn" type="submit" :disabled="!isReady">Wyślij</button>
+                <button style="margin-top: 0.75rem;" class="submit-btn-forms-3" type="submit"
+                    :disabled="!isReady">Wyślij</button>
             </div>
         </div>
 
