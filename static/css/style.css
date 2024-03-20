@@ -215,6 +215,10 @@
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
+.fancy-ds-button:disabled {
+  background-color: rgb(223, 223, 223);
+}
+
 .show-element {
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   margin-top: 0.938rem;
@@ -558,7 +562,7 @@ td {
   display: flex;
   flex-direction: column;
   height: fit-content;
-  width: 35rem;
+  width: 40%;
   background-color: rgb(223, 223, 223);
 }
 
@@ -592,9 +596,51 @@ td {
 .radios-div {
   margin-left: 0.313rem;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   flex-wrap: wrap;
   justify-content: space-between;
   width: 65%;
   gap: 0.625rem;
+}
+
+.confirm-div {
+  width: 400px;
+}
+
+.huge-radio {
+  width: 15px;
+  height: 15px;
+}
+
+.ex-06-container {
+  display: inline-flex;
+  width: 100%;
+}
+
+.confirm-right-side {
+  background-color: rgb(223, 223, 223);
+  width: 60%;
+}
+
+.summary {
+  margin-top: 50px;
+  height: fit-content;
+  width: 600px;
+  background-color: rgb(240, 239, 239);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.summary>* {
+  margin-left: 30px;
+}
+
+.black-hr {
+  border: 1px solid black;
+  width: 80%;
+}
+
+.bold-text {
+  font-weight: bold;
 }

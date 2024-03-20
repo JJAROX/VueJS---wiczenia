@@ -13,23 +13,51 @@
     <div id="app">
         <h1 class="vue-title">{{ title }}</h1>
         <h2 class="vue-message">{{ message }}</h2>
-        <div class="forms-06-container">
-            <h2 class="vue-message" style="margin-left: 0.938rem;">Dodaj do koszyka</h2>
-            <h3 class="exercise" style="margin-left: 0.938rem;">Produkty:</h3>
-            <div class="checkboxes-div">
-                <div class="inplabel-div" v-for="(product,i) in products">
-                    <input type="checkbox" :id=i>
-                    <label :for=i v-text="product"></label>
+        <div class="ex-06-container">
+            <div class="forms-06-container">
+                <h2 class="vue-message" style="margin-left: 0.938rem;">Dodaj do koszyka</h2>
+                <h3 class="exercise" style="margin-left: 0.938rem;">Produkty:</h3>
+                <div class="checkboxes-div">
+                    <div class="inplabel-div" v-for="(product,i) in products">
+                        <input @change="checkCheckbox" type="checkbox" :id=i :value=product>
+                        <label :for=i v-text="product"></label>
+                    </div>
                 </div>
-            </div>
-            <h3 class="exercise" style="margin-left: 0.938rem;">Sposób dostawy: {{option}}</h3>
-            <div class="radios-div">
-                <div class="radiolabel-div" v-for="(order,i) in orderOptions">
-                    <img :src=order.img alt="zdjencie" height="50" width="100">
-                    <input @change="checkRadio" type="radio" name="order-options" :id="i" :value="order.name">
-                    <label :for="i" v-text="order.name"></label>
+                <h3 class="exercise" style="margin-left: 0.938rem;">Sposób dostawy: {{option}}</h3>
+                <div class="radios-div">
+                    <div class="radiolabel-div" v-for="(order,i) in orderOptions">
+                        <img :src=order.img alt="zdjencie" height="50" width="100">
+                        <input @change="checkRadio" type="radio" name="order-options" :id="i" :value="order.name">
+                        <label :for="i" v-text="order.name"></label>
+                    </div>
+                </div>
+                <h3 class="exercise" style="margin-left: 0.938rem;">Metoda płatności: {{payment}}</h3>
+                <div class="radios-div">
+                    <div class="radiolabel-div" v-for="(payments,i) in paymentOptions">
+                        <img :src=payments.img alt="zdjencie" height="50" width="100">
+                        <input @change="checkRadio2" type="radio" name="payments-options" :id="i"
+                            :value="payments.name">
+                        <label :for="i" v-text="payments.name"></label>
+                    </div>
                 </div>
 
+                <div class="confirm-div">
+                    <hr>
+                    <label class="potw" for="potw">Potwierdzam zgodność danych podanych w formularzu kontaktowym</label>
+                    <input @change="checkAccept" class="huge-radio" type="checkbox" id="potw">
+                </div>
+            </div>
+            <div class="confirm-right-side" v-show="isReady">
+                <div class="summary">
+                    <h2 class="vue-message">Podsumowanie</h2>
+                    <h3 class="exercise">Zakupy</h3>
+                    <p v-for="choosen_product in choosen_products" v-text="choosen_product"></p>
+                    <hr class="black-hr">
+                    <p> <span class="bold-text">Sposób dostawy: </span>{{option}}</p>
+                    <hr class="black-hr">
+                    <p> <span class="bold-text">Metoda płatności: </span>{{payment}}</p>
+                    <button class="fancy-ds-button" type="submit" :disabled="!isConfirmed">Wyślij</button>
+                </div>
             </div>
         </div>
 
@@ -51,29 +79,52 @@
                         { name: 'Poczta Polska', img: 'gfx/poczta.png' },
                         { name: 'Osobiście', img: 'gfx/locker.png' }
                     ],
+                    paymentOptions: [
+                        { name: 'blik', img: 'gfx/blik.png' },
+                        { name: 'paypal', img: 'gfx/paypal.png' },
+                        { name: 'google pay', img: 'gfx/gpay.png' },
+                        { name: 'płatność kartą', img: 'gfx/visa.png' },
+                        { name: 'szybki przelew', img: 'gfx/p24.png' }
+                    ],
+                    choosen_products: [],
                     option: '',
+                    payment: '',
                     check: false,
                     check2: false,
+                    check3: false,
                     accept: false,
                     selectedOrder: 'None'
                 }
             },
             computed: {
                 isReady() {
-                    if (this.check === true && this.check2 === true && this.accept === true) {
+                    if (this.choosen_products.length > 0 && this.check2 === true && this.check3 === true) {
                         return true
-                    } else if (this.check === false || this.check2 === false || this.accept === false) {
+                    } else if (this.choosen_products == 0 || this.check2 === false || this.check3 === false) {
+                        return false
+                    }
+                },
+                isConfirmed() {
+                    if (this.accept === true) {
+                        return true
+                    } else if (this.accept === false) {
                         return false
                     }
                 }
             },
             methods: {
                 checkCheckbox(e) {
+                    console.log(e.target.value);
+                    console.log(this.accept);
                     if (e.target.checked === true) {
                         console.log('wow mega');
+                        this.choosen_products.push(e.target.value)
                         this.check = true
                     } else if (e.target.checked === false) {
                         console.log('wow mega');
+                        if (this.choosen_products.includes(e.target.value) === true) {
+                            this.choosen_products = this.choosen_products.filter(element => element !== e.target.value);
+                        }
                         this.check = false
                     }
                 },
@@ -81,39 +132,33 @@
                     console.log(e.target.value);
                     this.option = e.target.value
                     if (e.target.checked === true) {
-                        console.log('wow mega2');
+                        console.log('wow mega1');
                         this.check2 = true
                     } else if (e.target.checked === false) {
-                        console.log('wow mega2');
+                        console.log('wow mega1');
                         this.check2 = false
+                    }
+                },
+                checkRadio2(e) {
+                    console.log(e.target.value);
+                    this.payment = e.target.value
+                    if (e.target.checked === true) {
+                        console.log('wow mega2');
+                        this.check3 = true
+                    } else if (e.target.checked === false) {
+                        console.log('wow mega2');
+                        this.check3 = false
                     }
                 },
                 checkAccept(e) {
                     if (e.target.checked === true) {
-                        console.log('wow mega3');
+                        console.log('wow mega4');
                         this.accept = true
                     } else if (e.target.checked === false) {
-                        console.log('wow mega3');
+                        console.log('wow mega4');
                         this.accept = false
                     }
                 },
-                convertCurrency(currency) {
-                    console.log(currency);
-                    switch (currency) {
-                        case "PLN":
-                            return "ZŁOTYCH"
-                            break;
-                        case "GBP":
-                            return "FUNTÓW"
-                            break;
-                        case "USD":
-                            return "DOLARÓW"
-                            break;
-
-                        default:
-                            break;
-                    }
-                }
             }
         }).mount("#app")
     </script>
