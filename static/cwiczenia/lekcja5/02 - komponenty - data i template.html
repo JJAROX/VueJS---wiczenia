@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>02-Komponenty</title>
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="app">
+    <h1 class="vue-title">{{ title }}</h1>
+    <h2 class="vue-message">{{ message }}</h2>
+    <div class="components-inline-div">
+      <card-component></card-component>
+      <card-component></card-component>
+      <card-component></card-component>
+    </div>
+
+
+  </div>
+
+  </div>
+  <script>
+    const cardComponent = {
+      template: `<div class="component-card">
+        <h3 class="exercise">Moja wizytówka</h3>
+        <p>Imie: {{name}}</p>
+        <p>Nazwisko: {{surname}}</p>
+        <p>Wiek: {{age}}</p>
+        <p>Zawód: {{job}}</p>
+        </div>`,
+      data() {
+        return {
+          name: 'Jan',
+          surname: 'Nowak',
+          age: 30,
+          job: 'Informatyk'
+        }
+      },
+
+    }
+    const app = Vue.createApp({
+
+      data() {
+        return {
+          title: "02:Komponenty",
+          message: 'data i template komponentu',
+        }
+      },
+      components: {
+        "card-component": cardComponent
+      }
+    }).mount("#app")
+  </script>
+</body>
+
+</html>

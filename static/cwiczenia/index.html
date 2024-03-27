@@ -22,6 +22,9 @@
   <h2 class="lesson-title">lekcja-4-forms</h2>
   <div class="main" id="lession_4">
   </div>
+  <h2 class="lesson-title">lekcja-5-components</h2>
+  <div class="main" id="lession_5">
+  </div>
   <script>
     const options = {
       method: "GET",
@@ -37,6 +40,7 @@
         const main_2 = document.getElementById('lession_2')
         const main_3 = document.getElementById('lession_3')
         const main_4 = document.getElementById('lession_4')
+        const main_5 = document.getElementById('lession_5')
         data.filenames.forEach(element => {
           const link = document.createElement('a')
           link.append(element)
@@ -65,6 +69,13 @@
           link.classList.add('subpage-link')
           link.href = element
           main_4.appendChild(link)
+        })
+        data.filenames5.forEach(element => {
+          const link = document.createElement('a')
+          link.append(element)
+          link.classList.add('subpage-link')
+          link.href = element
+          main_5.appendChild(link)
         })
 
       })

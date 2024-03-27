@@ -644,3 +644,78 @@ td {
 .bold-text {
   font-weight: bold;
 }
+
+.items-component {
+  border: 0.313rem dotted blue;
+  background-color: rgb(182, 197, 218);
+  height: fit-content;
+  width: fit-content;
+  padding-inline: 1.25rem;
+}
+
+.change-title-component {
+  border: 0.313rem dotted red;
+  background-color: rgb(255, 193, 194);
+  height: fit-content;
+  width: fit-content;
+  padding-inline: 1.25rem;
+}
+
+.add-item-component {
+  border: 0.313rem dotted green;
+  background-color: rgb(191, 211, 202);
+  height: fit-content;
+  width: fit-content;
+  padding-inline: 1.25rem;
+}
+
+.components-inline-div {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.components-inline-div>* {
+  margin: 0.938rem;
+}
+
+.component-card {
+  height: fit-content;
+  width: fit-content;
+  padding-inline: 1.25rem;
+  padding-right: 5rem;
+  border: 0.313rem dotted gray;
+  background-color: lightgray;
+  border-radius: 0.625rem;
+}
+
+.component-card-2 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-inline: 20px;
+  height: fit-content;
+  width: fit-content;
+  border: 0.313rem dotted gray;
+  background-color: lightgray;
+  border-radius: 0.625rem;
+}
+
+.app-container {
+  border: 0.313rem dotted red;
+  width: fit-content;
+  height: fit-content;
+}
+
+.app-container>* {
+  margin: 0.938rem;
+}
+
+.child-component {
+  border: 0.313rem dotted blue;
+  width: fit-content;
+  height: fit-content;
+  padding-inline: 1.25rem;
+  padding-bottom: 1.25rem;
+}

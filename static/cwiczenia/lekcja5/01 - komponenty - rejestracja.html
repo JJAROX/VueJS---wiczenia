@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>01-Komponenty</title>
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="app">
+    <h1 class="vue-title">{{ title }}</h1>
+    <h2 class="vue-message">{{ message }}</h2>
+    <div class="components-inline-div">
+      <items-component></items-component>
+      <items-component></items-component>
+      <items-component></items-component>
+    </div>
+    <div class="components-inline-div">
+      <change-title-component></change-title-component>
+      <add-item-component></add-item-component>
+    </div>
+
+  </div>
+
+  </div>
+  <script>
+    const ItemsComponent = {
+      template: '<div class="items-component"><h3 class="exercise">ItemsComponent</h3></div>'
+    }
+    const ChangeTitleComponent = {
+      template: '<div class="change-title-component"><h3 class="exercise">ChangeTitleComponent</h3></div>'
+    }
+    const AddItemComponent = {
+      template: '<div class="add-item-component"><h3 class="exercise">AddItemComponent</h3></div>'
+    }
+    const app = Vue.createApp({
+
+      data() {
+        return {
+          title: "01:Komponenty",
+          message: 'rejestracja komponentu - components:{}',
+        }
+      },
+      components: {
+        "items-component": ItemsComponent,
+        "change-title-component": ChangeTitleComponent,
+        "add-item-component": AddItemComponent
+      }
+    }).mount("#app")
+  </script>
+</body>
+
+</html>

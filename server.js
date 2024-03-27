@@ -10,6 +10,7 @@ app.use(express.static('static/cwiczenia/lekcja1'))
 app.use(express.static('static/cwiczenia/lekcja2'))
 app.use(express.static('static/cwiczenia/lekcja3'))
 app.use(express.static('static/cwiczenia/lekcja4'))
+app.use(express.static('static/cwiczenia/lekcja5'))
 
 app.listen(PORT, function () {
   console.log("start serwera na porcie " + PORT)
@@ -26,6 +27,6 @@ app.get("/test", (req, res) => {
   const filenames2 = fs.readdirSync(__dirname + "/static/cwiczenia/lekcja2");
   const filenames3 = fs.readdirSync(__dirname + "/static/cwiczenia/lekcja3");
   const filenames4 = fs.readdirSync(__dirname + "/static/cwiczenia/lekcja4");
-  console.log(filenames4);
-  res.json({ filenames, filenames2, filenames3, filenames4 })
+  const filenames5 = fs.readdirSync(__dirname + "/static/cwiczenia/lekcja5");
+  res.json({ filenames, filenames2, filenames3, filenames4, filenames5 })
 })

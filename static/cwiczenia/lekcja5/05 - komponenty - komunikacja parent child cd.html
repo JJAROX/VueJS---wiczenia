@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>05-Komponenty</title>
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="app" class="app-container">
+    <h1 class="vue-title">{{ title }}</h1>
+    <h2 class="vue-message">{{ message }}</h2>
+    <button @click="add" class="fancy-ds-button">wstaw te same dane do wszystkich wizytówek</button>
+    <div class="components-inline-div">
+      <card-component :header="headerApp" :name="nameApp" :age="ageApp"></card-component>
+      <card-component :header="headerApp" :name="nameApp" :age="ageApp"></card-component>
+      <card-component :header="headerApp" :name="nameApp" :age="ageApp"></card-component>
+    </div>
+  </div>
+
+  </div>
+  <script>
+    const cardComponent = {
+      template: `<div class="component-card-2">
+        <h2 class="vue-message">{{ this.header }}</h2>
+        <p>Imie: {{this.name}}</p>
+        <p>Wiek: {{this.age}}</p>
+        </div>`,
+      props: ['header', 'name', 'surname', 'age', 'job'],
+
+    }
+    const app = Vue.createApp({
+
+      data() {
+        return {
+          title: "05:Komponenty",
+          message: 'komunikacja rodzic (aplikacja) => dziecko (komponent) => zmiana prop przez aplikację',
+          headerApp: "default header",
+          nameApp: "default name",
+          ageApp: "default age"
+        }
+      },
+      methods: {
+        add() {
+          this.headerApp = 'Wizytówka'
+          this.nameApp = 'Jan Nowak'
+          this.ageApp = 23
+        }
+      },
+
+      components: {
+        "card-component": cardComponent
+      }
+    }).mount("#app")
+  </script>
+</body>
+
+</html>

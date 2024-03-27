@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>06-Komponenty</title>
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="app" class="app-container">
+    <h1 class="vue-title">{{ title }}</h1>
+    <h2 class="vue-message">{{ message }}</h2>
+    <div class="components-inline-div">
+      <child-component v-for="digit in digitsArray" :number="digit"></child-component>
+    </div>
+  </div>
+
+  </div>
+  <script>
+    const childComponent = {
+      template: `<div class="child-component">
+        <h3 class="exercise">child-component</h3>
+        <h2 class="vue-message">data from parent: {{number}}</h2>
+        <h2 class="vue-message">data in component: {{x}}</h2>
+        <button @click="add" class="fancy-ds-button">dodaj 1 do wartości w komponencie</button>
+        </div>`,
+      props: ['number'],
+      data() {
+        return { x: this.number }
+      },
+      methods: {
+        add() {
+          this.x++
+        }
+      }
+
+    }
+    const app = Vue.createApp({
+
+      data() {
+        return {
+          title: "06:Komponenty",
+          message: 'komponenty z tablicy : komunikacja rodzic (aplikacja) => dziecko (komponent) => zmiana data oraz działanie wewnątrz child',
+          digitsArray: [1, 4, 16]
+        }
+      },
+      methods: {
+      },
+
+      components: {
+        "child-component": childComponent
+      }
+    }).mount("#app")
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>03-Komponenty</title>
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="app">
+    <h1 class="vue-title">{{ title }}</h1>
+    <h2 class="vue-message">{{ message }}</h2>
+    <div class="components-inline-div">
+      <card-component header="Nagłówek wizytówki" name="Jacek" surname="Nowak" age="35" job="Kierowca"></card-component>
+      <card-component header="Nagłówek wizytówki" name="Adam" surname="Kowalski" age="27"
+        job="Manager"></card-component>
+      <card-component header="Nagłówek wizytówki" name="Joanna" surname="Pestka" age="44"
+        job="Księgowa"></card-component>
+    </div>
+
+
+  </div>
+
+  </div>
+  <script>
+    const cardComponent = {
+      template: `<div class="component-card">
+        <h2 class="vue-message">{{ this.header }}</h2>
+        <p>Imie: {{this.name}}</p>
+        <p>Nazwisko: {{this.surname}}</p>
+        <p>Wiek: {{this.age}}</p>
+        <p>Zawód: {{this.job}}</p>
+        <pre>{{JSON.stringify(this.$props, null,5)}}</pre>
+        </div>`,
+      props: ['header', 'name', 'surname', 'age', 'job'],
+
+    }
+    const app = Vue.createApp({
+
+      data() {
+        return {
+          title: "03:Komponenty",
+          message: 'props => dane przekazywane z aplikacji Vue do komponentu',
+        }
+      },
+      components: {
+        "card-component": cardComponent
+      }
+    }).mount("#app")
+  </script>
+</body>
+
+</html>
