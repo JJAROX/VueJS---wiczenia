@@ -719,3 +719,12 @@ td {
   padding-inline: 1.25rem;
   padding-bottom: 1.25rem;
 }
+
+.child-component-2 {
+  border: 0.313rem dotted blue;
+  width: fit-content;
+  height: fit-content;
+  min-height: 7.5rem;
+  padding-inline: 1.25rem;
+  padding-bottom: 1.25rem;
+}

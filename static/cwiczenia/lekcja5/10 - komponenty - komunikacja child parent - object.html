@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>10-Komponenty</title>
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="app" class="app-container">
+    <h1 class="vue-title">{{ title }}</h1>
+    <h2 class="vue-message">{{ message }}</h2>
+    <h2 style="font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">
+      data sent by child: {{parentValue}}</h2>
+    <div class="components-inline-div">
+      <child-component v-for="{id,val} in items" :numbers="val" :func-prop="updateDataInParent"
+        :func-prop-2="updateDataInChild" :id="id"></child-component>
+    </div>
+  </div>
+
+  </div>
+  <script>
+    const childComponent = {
+      template: `<div class="child-component">
+        <h3 class="exercise">child-component</h3>
+        <h2 class="vue-message">{{ numbers }}</h2>
+        <button @click="increseVal(numbers,id)" class="fancy-ds-button">modify in component</button>
+        <button @click="addItem(numbers)" class="fancy-ds-button" style="margin-left:15px">send data to parent</button>
+        </div>`,
+      props: ['funcProp', 'numbers', 'id', 'funcProp2'],
+      data() {
+        return { x: this.number }
+      },
+      methods: {
+        addItem(value) {
+          this.funcProp(value)
+        },
+        increseVal(numbers, id) {
+          this.funcProp2(numbers, id)
+        }
+      }
+    }
+    const app = Vue.createApp({
+
+      data() {
+        return {
+          title: "10:Komponenty",
+          message: 'komunikacja child => parent : zadanie 2',
+          parentValue: 0,
+          items: [
+            { id: 1, val: 1111 },
+            { id: 2, val: 2222 },
+            { id: 3, val: 3333 },
+          ]
+        }
+      },
+      methods: {
+        updateDataInParent(val) {
+          this.parentValue += val
+        },
+        updateDataInChild(number, id) {
+          const item = this.items.find(item => item.id === id);
+          if (item) {
+            console.log(item.id);
+            item.val++
+          } else {
+            console.log("Element o zadanym ID nie został znaleziony.");
+          }
+
+        }
+      },
+
+      components: {
+        "child-component": childComponent
+      }
+    }).mount("#app")
+  </script>
+</body>
+
+</html>

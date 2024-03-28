@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>08-Komponenty</title>
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="app">
+    <h1 class="vue-title">{{ title }}</h1>
+    <h2 class="vue-message">{{ message }}</h2>
+    <div class="components-inline-div">
+      <items-component></items-component>
+      <change-title-component></change-title-component>
+      <add-item-component></add-item-component>
+    </div>
+  </div>
+
+  </div>
+  <script>
+    const appData = {
+      title: "08:Komponenty",
+      message: "komunikacja z globalnymi danymi",
+      items: [
+        { text: "element 1" },
+        { text: "element 2" },
+
+      ],
+    }
+    const itemsComponent = {
+      template: `<div class="child-component-2">
+        <h3 class="exercise">ItemsComponent</h3>
+      <ul>
+        <li v-for="item in items">
+        {{item.text}}
+        <input type="checkbox" v-model="item.checked">
+        </li>
+      </ul>
+        </div>`,
+      props: ['funcProp'],
+      data() {
+        return appData
+      },
+      methods: {
+        addItem(val) {
+          this.funcProp(val)
+        }
+      }
+    }
+    const changeTitleComponent = {
+      template: `<div class="child-component-2">
+        <h3 class="exercise">ChangeTitleComponent</h3>
+        <input type="text" class="input-list" v-model="title">
+        </div>`,
+      props: ['funcProp'],
+      data() {
+        return appData
+      },
+      methods: {
+        addItem(val) {
+          this.funcProp(val)
+        }
+      }
+    }
+    const addItemComponent = {
+      template: `<div class="child-component-2">
+        <h3 class="exercise">AddItemComponent</h3>
+        <input @keyup="updateContext" @keyup.enter="addText" class="input-list" type="text">
+        <button @click="addTextBtn" class="fancy-ds-button" style="margin-left:0.938rem">add item</button>
+        </div>`,
+      props: ['funcProp'],
+      data() {
+        return appData
+      },
+      methods: {
+        updateContext(element) {
+          this.context = element.target.value
+          console.log(this.context);
+        },
+        addText(element) {
+          console.log(element.value);
+          this.items.push({ text: element.target.value, checked: false })
+        },
+        updateContext(element) {
+          this.context = element.target.value
+          console.log(this.context);
+        },
+        addTextBtn() {
+          this.items.push({ text: this.context, checked: false })
+        }
+      }
+    }
+
+    const app = Vue.createApp({
+
+      data() {
+        return appData
+      },
+      components: {
+        "items-component": itemsComponent,
+        "change-title-component": changeTitleComponent,
+        "add-item-component": addItemComponent
+      }
+    }).mount("#app")
+  </script>
+</body>
+
+</html>
